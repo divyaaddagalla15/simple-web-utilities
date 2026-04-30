@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: 'Arial'; background: #fdf6e3; padding: 50px; text-align: center; }
+        textarea { width: 300px; height: 150px; padding: 10px; border: 2px solid #b58900; border-radius: 10px; }
+        h2 { color: #b58900; }
+        .save-btn { display: block; margin: 10px auto; padding: 10px 20px; background: #b58900; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h2>Digital Sticky Note</h2>
+    <textarea id="noteArea" placeholder="Write something..."></textarea>
+    <button class="save-btn" onclick="saveNote()">Save Note</button>
+
+    <script>
+        // Load note on startup
+        document.getElementById("noteArea").value = localStorage.getItem("myNote") || "";
+
+        function saveNote() {
+            const text = document.getElementById("noteArea").value;
+            localStorage.setItem("myNote", text);
+            alert("Note saved to browser storage!");
+        }
+    </script>
+</body>
+</html>
