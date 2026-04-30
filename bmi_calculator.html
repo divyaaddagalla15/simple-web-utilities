@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; background: #f4f7f6; padding-top: 50px; }
+        .box { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center; width: 300px; }
+        input { width: 80%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; }
+        button { background: #27ae60; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
+        #result { margin-top: 20px; font-weight: bold; font-size: 1.2em; color: #2c3e50; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>BMI Calculator</h2>
+        <input type="number" id="w" placeholder="Weight (kg)">
+        <input type="number" id="h" placeholder="Height (cm)">
+        <button onclick="calc()">Calculate</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calc() {
+            let weight = document.getElementById("w").value;
+            let height = document.getElementById("h").value / 100; // convert cm to m
+            if(weight && height) {
+                let bmi = (weight / (height * height)).toFixed(1);
+                let status = bmi < 18.5 ? "Underweight" : bmi < 25 ? "Normal" : "Overweight";
+                document.getElementById("result").innerHTML = `BMI: ${bmi} <br> (${status})`;
+            }
+        }
+    </script>
+</body>
+</html>
